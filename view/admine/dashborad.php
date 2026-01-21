@@ -1,5 +1,17 @@
+<?php
+
+use App\Repository\CategoriesRepository;
+use App\Repository\TagsRepository;
+
+$TagsRepository = new TagsRepository();
+$CategoriesRepository = new CategoriesRepository();
+
+$categories = $this->$CategoriesRepository->getAllcategories();
+$tags = $this->$TagsRepository->getAlltags;
+?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="..\..\public\css\admine\admine_style.css">
 </head>
+
 <body>
 
     <header class="entete-principale">
@@ -21,7 +34,7 @@
     </header>
 
     <main class="zone-contenu conteneur">
-        
+
         <section class="admin-grid">
             <aside class="sidebar-admin">
                 <div class="stat-simple">Total Offres: <strong>24</strong></div>
@@ -33,7 +46,7 @@
             </aside>
 
             <div class="content-display">
-                
+
                 <div id="section-offres" class="tab-content active">
                     <h2 class="titre-v">Flux des Offres</h2>
                     <div class="liste-lineaire" id="container-offres">
@@ -48,23 +61,29 @@
                         </div>
                     </div>
                 </div>
-
-                <div id="section-categories" class="tab-content">
-                    <h2 class="titre-v">Gestion des Catégories</h2>
-                    <div class="badges-container" id="container-categories">
-                        <span class="badge-item">Development <i class="fas fa-times"></i></span>
-                        <span class="badge-item">Economic <i class="fas fa-times"></i></span>
-                        <span class="badge-item">Mobile <i class="fas fa-times"></i></span>
+                <?php if (!empty($categories)): ?>
+                    <div id="section-categories" class="tab-content">
+                        <h2 class="titre-v">Gestion des Catégories</h2>
+                        <div class="badges-container" id="container-categories">
+                            <?php foreach ($categories as $categorie): ?>
+                                <span class="badge-item"><?php echo htmlspecialchars($categorie['titre']); ?><i class="fas fa-times"></i></span>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
 
-                <div id="section-tags" class="tab-content">
-                    <h2 class="titre-v">Gestion des Tags</h2>
-                    <div class="badges-container" id="container-tags">
-                        <span class="badge-item tag-style">Remote <i class="fas fa-times"></i></span>
-                        <span class="badge-item tag-style">Urgent <i class="fas fa-times"></i></span>
+                <?php if (!empty($tags)): ?>
+                    <div id="section-tags" class="tab-content">
+                        <h2 class="titre-v">Gestion des Tags</h2>
+                        <div class="badges-container" id="container-tags">
+                            <?php foreach ($tags as $tag): ?>
+                                <span class="badge-item tag-style"><?php echo htmlspecialchars($tag['titre']); ?><i class="fas fa-times" ></i></span>
+                            <?php endforeach; ?>
+
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
+
 
             </div>
         </section>
@@ -72,24 +91,29 @@
 
     <div class="modal" id="modalCategory">
         <div class="modal-contenu">
-            <div class="modal-header"><h3>Nouvelle Catégorie</h3><span class="fermer">&times;</span></div>
+            <div class="modal-header">
+                <h3>Nouvelle Catégorie</h3><span class="fermer">&times;</span>
+            </div>
             <form id="formCategory">
-                <input type="text" placeholder="Nom de la catégorie (ex: Mobile)" required>
-                <button type="submit" class="btn-valider">Ajouter</button>
+                <input type="text" name="categorieName" placeholder="Nom de la catégorie (ex: Mobile)" required>
+                <button type="submit" class="btn-valider" name="ajouter">Ajouter</button>
             </form>
         </div>
     </div>
 
     <div class="modal" id="modalTag">
         <div class="modal-contenu">
-            <div class="modal-header"><h3>Nouveau Tag</h3><span class="fermer">&times;</span></div>
+            <div class="modal-header">
+                <h3>Nouveau Tag</h3><span class="fermer">&times;</span>
+            </div>
             <form id="formTag">
-                <input type="text" placeholder="Nom du tag (ex: Freelance)" required>
-                <button type="submit" class="btn-valider">Ajouter</button>
+                <input type="text" name="TagName" placeholder="Nom du tag (ex: Freelance)" required>
+                <button type="submit" name="ajouterTag" class="btn-valider">Ajouter</button>
             </form>
         </div>
     </div>
 
     <script src="..\..\public\js\admine\admine_script.js"></script>
 </body>
+
 </html>
