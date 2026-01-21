@@ -2,7 +2,8 @@
 
 
 
-namespace app\config;
+namespace App\Config;
+
 use PDO;
 
 class Database
@@ -19,7 +20,7 @@ class Database
         $this->connection = new PDO(
             $dsn,
             $this->username,
-            $this->password            
+            $this->password
         );
     }
     public static function getConnection(): PDO
@@ -30,5 +31,4 @@ class Database
 
         return self::$instance->connection;
     }
-    
 }
