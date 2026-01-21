@@ -9,7 +9,7 @@ create table utilisateurs (
     mot_de_passe varchar(255) not null
 );
 
-create table compétences (
+create table competences (
     id int PRIMARY key AUTO_INCREMENT,
     titre VARCHAR(255)
 );
@@ -38,6 +38,7 @@ create table categories (
 create table candidats (
     id int PRIMARY key AUTO_INCREMENT,
     Foreign Key (id) REFERENCES utilisateurs (id)
+
 );
 
 
@@ -48,7 +49,6 @@ create table admins (
 
 create table recruteurs (
     id int PRIMARY key AUTO_INCREMENT,
-    
     nom_entreprise VARCHAR(255) not null,
     logo varchar(255),
     Foreign Key (id) REFERENCES utilisateurs (id)
@@ -62,7 +62,7 @@ create table postuler (
     Foreign Key (offer_id) REFERENCES offers (id)
 
 );
-create table candidat_compétences(
+create table candidat_competences(
     candidat_id int,
     compétence_id int,
     Foreign Key (candidat_id) REFERENCES candidats (id),

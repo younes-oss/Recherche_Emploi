@@ -16,16 +16,16 @@ body {
 }
 .carte-inscription {
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   padding: 35px;
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 .titre-inscription {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 700;
-  margin: 0 0 5px 0;
+  margin: 0;
 }
 .sous-titre {
   color: #666e75;
@@ -40,7 +40,7 @@ body {
 }
 .groupe-champ label {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #666e75;
 }
 .champ-icone {
@@ -51,22 +51,16 @@ body {
   width: 100%;
   height: 48px;
   border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.6);
-  padding: 0 15px 0 45px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 0 15px 0 42px;
   font-size: 15px;
   outline: none;
-  transition: all 0.2s ease;
   background: #ffffff;
 }
 .champ-icone input:focus,
 .champ-icone select:focus {
   border-color: #0a66c2;
   border-width: 2px;
-  box-shadow: 0 0 0 1px #0a66c2;
-}
-.champ-icone select {
-  cursor: pointer;
-  appearance: none;
 }
 .champ-icone .icone {
   position: absolute;
@@ -74,23 +68,96 @@ body {
   left: 15px;
   transform: translateY(-50%);
   color: #666e75;
-  font-size: 18px;
+}
+.dynamic-section {
+  display: none;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
+}
+.champ-action {
+  display: flex;
+  gap: 10px;
+}
+.champ-action .flex-grow {
+  flex-grow: 1;
+}
+.btn-plus {
+  background: #1d2226;
+  color: #ffffff;
+  border: none;
+  padding: 0 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.tags-container .tag {
+  background: #eef3f8;
+  color: #0a66c2;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.tags-container .tag i {
+  cursor: pointer;
+  font-size: 12px;
+  color: #dc3545;
+}
+.liste-dynamique {
+  margin-top: 15px;
+}
+.experience-item {
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  position: relative;
+}
+.experience-item input {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+.experience-item .remove-exp {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #dc3545;
+  cursor: pointer;
+}
+.btn-link {
+  background: none;
+  border: none;
+  color: #0a66c2;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
 }
 .bouton-principal {
   width: 100%;
-  height: 52px;
-  border-radius: 28px;
+  height: 50px;
+  border-radius: 25px;
   border: none;
   background: #0a66c2;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background 0.2s;
-}
-.bouton-principal:hover {
-  background: #084c91;
+  margin-top: 20px;
 }
 .texte-connexion {
   text-align: center;
@@ -99,16 +166,6 @@ body {
 }
 .texte-connexion a {
   color: #0a66c2;
-  font-weight: 600;
   text-decoration: none;
-}
-.texte-connexion a:hover {
-  text-decoration: underline;
-}
-@media (max-width: 480px) {
-  .carte-inscription {
-    box-shadow: none;
-    background: transparent;
-    padding: 20px;
-  }
+  font-weight: 600;
 }
