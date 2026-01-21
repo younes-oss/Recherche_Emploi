@@ -1,0 +1,223 @@
+body {
+  background-color: #f3f2f0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+}
+.conteneur {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.d-flex-align {
+  display: flex;
+  align-items: center;
+}
+.entete-principale {
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+.entete-principale .logo-plateforme {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: #1d2226;
+}
+.entete-principale .logo-plateforme span {
+  color: #0a66c2;
+}
+.entete-principale .navigation-centrale {
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+.entete-principale .navigation-centrale .lien-nav {
+  text-decoration: none;
+  color: #666e75;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.entete-principale .navigation-centrale .lien-nav.active {
+  color: #0a66c2;
+}
+.btn-ajouter {
+  background: #0a66c2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-ajouter:hover {
+  background: #084c91;
+}
+.titre-section {
+  margin: 40px 0;
+}
+.titre-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+}
+.titre-section p {
+  color: #666e75;
+}
+.grille-offres {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding-bottom: 50px;
+}
+.carte-job {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid #e0e0e0;
+  transition: 0.3s;
+}
+.carte-job:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+.carte-job .entete-carte {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.carte-job .entete-carte .badge-statut.actif {
+  background: #e6f4ea;
+  color: #1e7e34;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.carte-job .entete-carte .btn-action-icon {
+  background: #f8f9fa;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #666e75;
+}
+.carte-job .entete-carte .btn-action-icon.delete:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.carte-job .titre-poste {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #1d2226;
+}
+.carte-job .salaire-info {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.carte-job .tags-wrapper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.carte-job .tags-wrapper .badge-tag {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.carte-job .tags-wrapper .orange {
+  background: #fff1e7;
+  color: #ef6c00;
+}
+.carte-job .tags-wrapper .violet {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+.carte-job .footer-carte {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+.carte-job .footer-carte span {
+  font-size: 0.85rem;
+  color: #666e75;
+}
+.carte-job .footer-carte .lien-details {
+  color: #0a66c2;
+  font-weight: 700;
+  text-decoration: none;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+.modal-contenu {
+  background: #ffffff;
+  margin: 5% auto;
+  padding: 35px;
+  width: 550px;
+  border-radius: 20px;
+}
+.modal-contenu .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.modal-contenu .modal-header .fermer-modal {
+  font-size: 30px;
+  cursor: pointer;
+}
+.groupe-champ {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.groupe-champ label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.groupe-champ input,
+.groupe-champ select,
+.groupe-champ textarea {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+.groupe-champ input:focus,
+.groupe-champ select:focus,
+.groupe-champ textarea:focus {
+  border-color: #0a66c2;
+  border-width: 2px;
+}
+.ligne-double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.btn-valider {
+  width: 100%;
+  padding: 15px;
+  background: #1d2226;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 15px;
+}

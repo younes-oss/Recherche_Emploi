@@ -1,0 +1,241 @@
+body {
+  background-color: #f9fafb;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  margin: 0;
+  color: #1a1a1a;
+}
+.conteneur {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.d-flex-align {
+  display: flex;
+  align-items: center;
+}
+.entete-principale {
+  background: #ffffff;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.entete-principale .logo-plateforme {
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: #1d2226;
+}
+.entete-principale .logo-plateforme span {
+  color: #0a66c2;
+}
+.entete-principale .logo-plateforme i {
+  margin-right: 8px;
+  color: #0a66c2;
+}
+.entete-principale .navigation-centrale {
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+}
+.entete-principale .navigation-centrale .lien-nav {
+  text-decoration: none;
+  color: #666e75;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+}
+.entete-principale .navigation-centrale .lien-nav.active {
+  color: #1d2226;
+}
+.entete-principale .navigation-centrale .lien-nav.select-job {
+  background: #f3f4f6;
+  padding: 6px 15px;
+  border-radius: 20px;
+  color: #1d2226;
+}
+.entete-principale .navigation-centrale .lien-nav .pastille-rouge {
+  width: 6px;
+  height: 6px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: -2px;
+  right: -8px;
+}
+.entete-principale .actions-utilisateur {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.entete-principale .actions-utilisateur .btn-icon {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #666e75;
+  cursor: pointer;
+}
+.entete-principale .actions-utilisateur .avatar-utilisateur img {
+  width: 35px;
+  border-radius: 50%;
+  border: 2px solid #eee;
+}
+.titre-recommandation {
+  margin: 40px 0 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.grille-offres {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  padding-bottom: 50px;
+}
+.carte-job {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.carte-job:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(10, 102, 194, 0.2);
+}
+.carte-job:hover .logo-ent {
+  transform: scale(1.1);
+}
+.carte-job .entete-carte {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.carte-job .entete-carte .info-entreprise {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.carte-job .entete-carte .info-entreprise .logo-ent {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8fafc;
+  padding: 4px;
+  border: 1px solid #f1f5f9;
+}
+.carte-job .entete-carte .info-entreprise .nom-ent {
+  font-weight: 600;
+  color: #666e75;
+  font-size: 0.95rem;
+}
+.carte-job .tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.carte-job .tags-wrapper .badge-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+}
+.carte-job .tags-wrapper .badge-tag.orange {
+  background: #fff7ed;
+  color: #c2410c;
+}
+.carte-job .tags-wrapper .badge-tag.violet {
+  background: #faf5ff;
+  color: #7e22ce;
+}
+.carte-job .tags-wrapper .badge-tag.jaune {
+  background: #fefce8;
+  color: #854d0e;
+}
+.carte-job .titre-poste {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1d2226;
+  line-height: 1.3;
+}
+.carte-job .salaire-info {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 22px;
+  color: #1d2226;
+}
+.carte-job .salaire-info::after {
+  content: '/hr';
+  font-size: 0.9rem;
+  color: #666e75;
+  font-weight: 500;
+  margin-left: 4px;
+}
+.carte-job .liste-details {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 20px;
+}
+.carte-job .liste-details li {
+  color: #666e75;
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.carte-job .liste-details li i {
+  width: 18px;
+  color: rgba(10, 102, 194, 0.6);
+  font-size: 1rem;
+}
+.carte-job .bas-carte {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.carte-job .bas-carte .btn-fav {
+  background: #f8fafc;
+  border: 1px solid #f1f5f9;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.carte-job .bas-carte .btn-fav:hover {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #ffe4e6;
+}
+.carte-job .bas-carte .btn-action-job {
+  background: #1d2226;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.carte-job .bas-carte .btn-action-job:hover {
+  background: #0a66c2;
+  box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+}

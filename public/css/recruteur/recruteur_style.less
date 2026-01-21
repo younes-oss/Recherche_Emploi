@@ -1,0 +1,266 @@
+@noir-recruteur: #1d2226;
+@bleu-recruteur: #0a66c2;
+@fond-dashboard: #f3f2f0;
+@blanc: #ffffff;
+@gris-texte: #666e75;
+
+body {
+    background-color: @fond-dashboard;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+}
+
+.conteneur {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.d-flex-align {
+    display: flex;
+    align-items: center;
+}
+
+.entete-principale {
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: @blanc;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+
+    .logo-plateforme {
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: @noir-recruteur;
+
+        span {
+            color: @bleu-recruteur;
+        }
+    }
+
+    .navigation-centrale {
+        margin: 0 auto;
+        display: flex;
+        gap: 30px;
+
+        .lien-nav {
+            text-decoration: none;
+            color: @gris-texte;
+            font-weight: 600;
+            font-size: 0.9rem;
+
+            &.active {
+                color: @bleu-recruteur;
+            }
+        }
+    }
+}
+
+.btn-ajouter {
+    background: @bleu-recruteur;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+        background: darken(@bleu-recruteur, 10%);
+    }
+}
+
+.titre-section {
+    margin: 40px 0;
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+
+    p {
+        color: @gris-texte;
+    }
+}
+
+.grille-offres {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    padding-bottom: 50px;
+}
+
+.carte-job {
+    background: @blanc;
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    transition: 0.3s;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .entete-carte {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        .badge-statut.actif {
+            background: #e6f4ea;
+            color: #1e7e34;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .btn-action-icon {
+            background: #f8f9fa;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: @gris-texte;
+
+            &.delete:hover {
+                background: #fee2e2;
+                color: #dc2626;
+            }
+        }
+    }
+
+    .titre-poste {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: @noir-recruteur;
+    }
+
+    .salaire-info {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+    }
+
+    .tags-wrapper {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+
+        .badge-tag {
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .orange {
+            background: #fff1e7;
+            color: #ef6c00;
+        }
+
+        .violet {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
+    }
+
+    .footer-carte {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+
+        span {
+            font-size: 0.85rem;
+            color: @gris-texte;
+        }
+
+        .lien-details {
+            color: @bleu-recruteur;
+            font-weight: 700;
+            text-decoration: none;
+        }
+    }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-contenu {
+    background: @blanc;
+    margin: 5% auto;
+    padding: 35px;
+    width: 550px;
+    border-radius: 20px;
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+
+        .fermer-modal {
+            font-size: 30px;
+            cursor: pointer;
+        }
+    }
+}
+
+.groupe-champ {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        outline: none;
+
+        &:focus {
+            border-color: @bleu-recruteur;
+            border-width: 2px;
+        }
+    }
+}
+
+.ligne-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-valider {
+    width: 100%;
+    padding: 15px;
+    background: @noir-recruteur;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+}
