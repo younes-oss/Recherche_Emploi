@@ -38,6 +38,14 @@
                 </div>
 
                 <div class="groupe-champ">
+                    <label>Mot de passe</label>
+                    <div class="champ-icone">
+                        <i class="fa-solid fa-lock icone"></i>
+                        <input type="password" name="motDePasse" placeholder="Entrez votre mot de passe" required>
+                    </div>
+                </div>
+
+                <div class="groupe-champ">
                     <label>Vous êtes ?</label>
                     <div class="champ-icone">
                         <i class="fa-solid fa-user-tag icone"></i>
@@ -71,6 +79,23 @@
 
                 <div id="sectionCandidat" class="dynamic-section">
                     <div class="groupe-champ">
+                        <label>Numéro de téléphone</label>
+                        <div class="champ-icone">
+                            <i class="fa-solid fa-phone icone"></i>
+                            <input type="tel" name="telephone" placeholder="Ex : 06 12 34 56 78">
+                        </div>
+                    </div>
+
+                    <div class="groupe-champ">
+                        <label>Salaire attendu</label>
+                        <div class="champ-icone">
+                            <i class="fa-solid fa-euro-sign icone"></i>
+                            <input type="number" name="salaireAttendu" placeholder="Ex : 3000 €" min="0" step="100"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="groupe-champ">
                         <label>Compétences</label>
                         <div class="champ-action">
                             <div class="champ-icone flex-grow">
@@ -95,8 +120,8 @@
         </div>
     </section>
 
-    
-    
+
+
     <script src="..\..\public\js\auth\register_script.js"></script>
 
 </body>
