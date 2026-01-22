@@ -1,21 +1,33 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Experience;
 class Candidat extends Utilisateur
 {
-    private  $phone ;
-    private  $expectedSalary;
+    private $phone;
+    private $expectedSalary;
+    private $experiences = [];
 
-    public function __construct($name, $email, $password, $phone,$expectedSalary
+    public function __construct(
+        $name,
+        $email,
+        $password,
+        $phone,
+        $expectedSalary
     ) {
         parent::__construct($name, $email, $password);
-       
+
         $this->phone = $phone;
         $this->expectedSalary = $expectedSalary;
     }
 
-    
+    public function addExperience($entreprise, $poste, $dateDebut, $dateFin)
+    {
+        $exp = new Experience($entreprise, $poste, $dateDebut, $dateFin);
+        $exp->setCondidat($this);
+        $this->experiences[] = $exp;
+        return $exp;
+    }
 
     public function getPhone()
     {
@@ -32,7 +44,7 @@ class Candidat extends Utilisateur
         return $this->expectedSalary;
     }
 
-    public function setExpectedSalary( $expectedSalary)
+    public function setExpectedSalary($expectedSalary)
     {
         $this->expectedSalary = $expectedSalary;
     }

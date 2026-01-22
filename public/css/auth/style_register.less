@@ -5,89 +5,198 @@
 @gris: #666e75;
 
 body {
-    margin: 0; font-family: "Plus Jakarta Sans", sans-serif;
-    background: @fond; color: @noir;
+    margin: 0;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    background: @fond;
+    color: @noir;
 }
 
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 .page-inscription {
-    min-height: 100vh; display: flex; justify-content: center;
-    align-items: center; padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
 }
 
 .carte-inscription {
-    width: 100%; max-width: 500px; padding: 35px;
-    border-radius: 12px; background: @blanc;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 500px;
+    padding: 35px;
+    border-radius: 12px;
+    background: @blanc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.titre-inscription { font-size: 26px; font-weight: 700; margin: 0; }
-.sous-titre { color: @gris; font-size: 14px; margin-bottom: 25px; }
+.titre-inscription {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.sous-titre {
+    color: @gris;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
 
 .groupe-champ {
-    display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px;
-    label { font-size: 14px; font-weight: 600; color: @gris; }
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: @gris;
+    }
 }
 
 .champ-icone {
     position: relative;
-    input, select {
-        width: 100%; height: 48px; border-radius: 8px;
-        border: 1px solid rgba(0,0,0,0.4); padding: 0 15px 0 42px;
-        font-size: 15px; outline: none; background: @blanc;
-        &:focus { border-color: @bleu; border-width: 2px; }
+
+    input,
+    select {
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.4);
+        padding: 0 15px 0 42px;
+        font-size: 15px;
+        outline: none;
+        background: @blanc;
+
+        &:focus {
+            border-color: @bleu;
+            border-width: 2px;
+        }
     }
+
     .icone {
-        position: absolute; top: 50%; left: 15px;
-        transform: translateY(-50%); color: @gris;
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: @gris;
     }
 }
 
-.dynamic-section { display: none; margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ddd; }
+.dynamic-section {
+    display: none;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+}
 
-.champ-action { display: flex; gap: 10px; .flex-grow { flex-grow: 1; } }
+.champ-action {
+    display: flex;
+    gap: 10px;
+
+    .flex-grow {
+        flex-grow: 1;
+    }
+}
 
 .btn-plus {
-    background: @noir; color: @blanc; border: none;
-    padding: 0 15px; border-radius: 8px; cursor: pointer;
+    background: @noir;
+    color: @blanc;
+    border: none;
+    padding: 0 15px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .tags-container {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+
     .tag {
-        background: #eef3f8; color: @bleu; padding: 6px 12px;
-        border-radius: 20px; font-size: 13px; font-weight: 600;
-        display: flex; align-items: center; gap: 8px;
-        i { cursor: pointer; font-size: 12px; color: #dc3545; }
+        background: #eef3f8;
+        color: @bleu;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        i {
+            cursor: pointer;
+            font-size: 12px;
+            color: #dc3545;
+        }
     }
 }
 
-.liste-dynamique { margin-top: 15px; }
+.liste-dynamique {
+    margin-top: 15px;
+}
 
 .experience-item {
-    background: #f8f9fa; border: 1px solid #eee;
-    padding: 15px; border-radius: 10px; margin-bottom: 12px;
+    background: #f8f9fa;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 12px;
     position: relative;
-    input { 
-        width: 100%; height: 35px; margin-bottom: 8px; 
-        border: 1px solid #ddd; border-radius: 4px; padding: 0 10px;
+
+    input {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 0 10px;
     }
+
     .remove-exp {
-        position: absolute; top: 10px; right: 10px;
-        color: #dc3545; cursor: pointer;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        color: #dc3545;
+        cursor: pointer;
     }
 }
 
 .btn-link {
-    background: none; border: none; color: @bleu;
-    font-weight: 700; cursor: pointer; text-align: left; padding: 0;
+    background: none;
+    border: none;
+    color: @bleu;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
 }
 
 .bouton-principal {
-    width: 100%; height: 50px; border-radius: 25px; border: none;
-    background: @bleu; color: @blanc; font-weight: 700;
-    font-size: 16px; cursor: pointer; margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background: @bleu;
+    color: @blanc;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.texte-connexion { text-align: center; margin-top: 20px; font-size: 14px; a { color: @bleu; text-decoration: none; font-weight: 600; } }
+.texte-connexion {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+
+    a {
+        color: @bleu;
+        text-decoration: none;
+        font-weight: 600;
+    }
+}

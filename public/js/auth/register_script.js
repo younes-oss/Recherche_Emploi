@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const item = document.createElement('div');
         item.className = 'experience-item';
         item.innerHTML = `
-            <i class="fa-solid fa-trash-can remove-exp"></i>
+            
+            <i class="fa-solid fa-x remove-exp"></i>
             <input type="text" name="entreprise[]" placeholder="Entreprise / Établissement" required>
             <input type="text" name="poste[]" placeholder="Poste / Diplôme" required>
             <input type="text" name="date[]" placeholder="Période (ex: 2022 - 2024)" required>

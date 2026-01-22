@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Repository;
 class UserRepository
 {
     private $conn;
@@ -11,14 +11,16 @@ class UserRepository
 
     public function register($user)
     {
-        $query = "insert into utilisateurs (nom, email, mot_de_passe)
-        values (:nom, :email, :mot_de_passe)";
+        $query = "insert into utilisateurs (nom, email, mot_de_passe, id_role)
+        values (:nom, :email, :motDePasse, :idRole)";
         $stm = $this->conn->prepare($query);
 
         $stm->execute([
             ':nomComplet' => $user->getNomComplet(),
-            ':nomUtilisateur' => $user->getNomUtilisateur(),
-            ':motDePasse' => $user->getMotDePasse()
+            ':email' => $user->getEmail(),
+            // 'telephone' => $user->getTelephone(),
+            ':motDePasse' => $user->getPassword(),
+            ':idRole' => $user->getRole()->getId()
         ]);
 
         $user->setId($this->conn->lastInsertId());
@@ -56,4 +58,26 @@ class UserRepository
         return null;
     }
 
+    public function findByEmail($email)
+    {
+        $query = "
+                select u.id, u.nom, u.email, u.mot_de_passe, r.role
+                from utilisateurs u
+                join utilisateurroles ur on u.id = ur.idutilisateur
+                join roles r on ur.idrole = r.id
+                where u.nomutilisateur = :email
+            ";
+
+        $stm = $this->conn->prepare($query);
+        $stm->execute([
+            ':email' => $email
+        ]);
+
+        $user = $stm->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            return $user;
+        }
+        return null;
+    }
 }
