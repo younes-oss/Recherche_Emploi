@@ -6,6 +6,7 @@ use App\Config\Database;
 use App\Entity\Offre;
 use App\Entity\Recruteur;
 use App\Entity\Categorie;
+use App\Entity\Tag;
 use PDO;
 
 class OffreRepository
@@ -78,6 +79,26 @@ class OffreRepository
         return $this->mapToEntity($data);
     }
 
+    public function findAll(): array
+    {
+        $sql = "SELECT o.*, 
+                       r.id as rec_id, r.name as rec_name, r.email as rec_email, r.password as rec_password, r.company_name,
+                       c.id as cat_id, c.titre as cat_titre, c.description as cat_description
+                FROM offres o
+                INNER JOIN recruteurs r ON o.recruteur_id = r.id
+                INNER JOIN categories c ON o.categorie_id = c.id
+                WHERE o.status = 1";
+        
+        $stmt = $this->db->query($sql);
+        
+        $offres = [];
+        while ($data = $stmt->fetch()) {
+            $offres[] = $this->mapToEntity($data);
+        }
+        
+        return $offres;
+    }
+
     
         
      
@@ -139,6 +160,22 @@ class OffreRepository
         return $stmt->execute(['id' => $id]);
     }
 
+    private function getTagsForOffre(int $offreId): array
+    {
+        $sql = "SELECT t.* FROM tags t 
+                INNER JOIN offre_tag ot ON t.id = ot.tag_id 
+                WHERE ot.offre_id = :offre_id";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute(['offre_id' => $offreId]);
+        
+        $tags = [];
+        while ($data = $stmt->fetch()) {
+            $tags[] = new Tag($data['titre'], (int)$data['id']);
+        }
+        return $tags;
+    }
+
     private function mapToEntity(array $data): Offre
     {
         $recruteur = new Recruteur(
@@ -165,7 +202,10 @@ class OffreRepository
         $offre->setRecruteur($recruteur);
         $offre->setCategorie($categorie);
         $offre->setStatus((int)$data['status']);
-        $offre->setCreatedAt($data['created_at']);
+        $offre->setCreatedAt($data['created_at'] ?? null);
+        
+        // Charger les tags
+        $offre->setTags($this->getTagsForOffre($offre->getId()));
 
         return $offre;
     }
