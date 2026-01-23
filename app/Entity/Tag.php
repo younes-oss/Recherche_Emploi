@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Entity;
+use JsonSerializable ;
 
-class Tag
+class Tag implements JsonSerializable 
 {
     private ?int $id = null;
     private string $titre;
@@ -17,4 +18,10 @@ class Tag
 
     public function setId(?int $id): void { $this->id = $id; }
     public function setTitre(string $titre): void { $this->titre = $titre; }
+    public function jsonSerialize(): mixed {
+        return [
+            'id' => $this->id,
+            'titre' => $this->titre
+        ];
+    }
 }
