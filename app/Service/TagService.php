@@ -2,7 +2,7 @@
 namespace App\Service;
 use App\Repository\TagsRepository;
 
-class TagService{
+class TagService {
     private $TagsRepo;
     public function __construct()
     {

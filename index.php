@@ -16,11 +16,12 @@ $routeur->ajouter('view/auth/login', ['PageController', 'login']);
 $routeur->ajouter('view/admine/dashborad', ['PageController', 'dashboradAdmine']);
 $routeur->ajouter('view/recruteur/dashboard', ['PageController', 'dashboardRecruteur']);
 $routeur->ajouter('view/candidate/dashboard', ['PageController', 'dashboardCandidate']);
+$routeur->ajouter('view/admine/addCategorie', ['CategorieController', 'inputsCheck']);
+$routeur->ajouter('view/admine/addTag', ['TagController', 'inputsCheck']);
+$routeur->ajouter('view/admine/afficherlestag', ['TagController', 'getAllTags']);
+$routeur->ajouter('view/admine/afficherlescatego', ['CategorieController', 'getAllCategories']);
 
 
-try {
-    $routeur->dispatcher($url);
-} catch (Throwable $erreur) {
-    http_response_code(500);
-    echo "Erreur serveur";
-}
+
+
+$routeur->dispatch($url);

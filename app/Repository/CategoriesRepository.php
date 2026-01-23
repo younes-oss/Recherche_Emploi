@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Config\Database;
+use App\Entity\Categorie;
 use PDO;
 
 class CategoriesRepository
@@ -39,7 +40,6 @@ class CategoriesRepository
             return false;
         }
     }
-
     public function getAllcategories()
     {
         $categories = [];
@@ -48,8 +48,10 @@ class CategoriesRepository
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
-            $categories[] = new Categorie($row["titre"]);
+            $cat = new Categorie($row["titre"]);
+            $cat->setId($row["id"]);
+            $categories[] =  $cat;
         }
-        return $categories = [];
+        return $categories;
     }
 }
