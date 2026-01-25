@@ -1,44 +1,42 @@
 <?php
 
 namespace App\router;
+require_once "vendor/autoload.php";
+
 
 class Router
 {
     private $routes = [];
 
-    // Ajouter une route
-    public function ajouter($chemin, $callback)
+    public function ajouter($path, $callBack)
     {
-        $this->routes[$chemin] = $callback;
+        $this->routes[$path] = $callBack;
     }
 
-    // Dispatcher / gérer la route
     public function dispatcher($uri)
     {
-        if (!isset($this->routes[$uri])) {
+        // $res = array_key_exists($uri, $this->routes);
+        // echo  $this->routes[$uri][0]."test";
+ 
+        // var_dump($uri);
+       
+        // echo json_encode($this->routes);
+
+        if (array_key_exists($uri, $this->routes)) {
+            $action = $this->routes[$uri];
+
+            $controller = $action[0];
+            $method = $action[1];
+
+            // echo $controller . $method;
+            $className = "App\\Controller\\".$controller;
+            $obj = new $className();
+
+            $obj->$method();
+
+        } else {
             http_response_code(404);
-            echo "404 - Page non trouvée";
-            return;
+            echo "this file not found";
         }
-
-        list($controller, $methode) = $this->routes[$uri];
-
-        $nomClasse = "App\\Controller\\" . $controller;
-
-        if (!class_exists($nomClasse)) {
-            http_response_code(500);
-            echo "Controller introuvable";
-            return;
-        }
-
-        $objet = new $nomClasse();
-
-        if (!method_exists($objet, $methode)) {
-            http_response_code(500);
-            echo "Méthode introuvable";
-            return;
-        }
-
-        $objet->$methode();
     }
 }

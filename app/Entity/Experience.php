@@ -7,16 +7,15 @@ class Experience
     private int $id;
     private $entreprise;
     private $poste;
-    private $dateDebut;
-    private $dateFin;
+    private $date;
+
     private $condidat;
 
-    public function __construct($entreprise, $poste, $dateDebut, $dateFin)
+    public function __construct($entreprise, $poste, $date)
     {
         $this->entreprise = $entreprise;
         $this->poste = $poste;
-        $this->dateDebut = $dateDebut;
-        $this->dateFin = $dateFin;
+        $this->date = $date;
     }
 
     public function getEntreprise()
@@ -35,6 +34,15 @@ class Experience
     public function getPoste()
     {
         return $this->poste;
+    }
+
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
+    public function getDate()
+    {
+        return $this->date;
     }
 
     public function getId()

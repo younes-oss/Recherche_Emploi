@@ -11,16 +11,13 @@ $url = parse_url($url, PHP_URL_PATH);
 $url = trim($url, '/');
 
 $routeur = new Router();
-$routeur->ajouter('view/auth/register', ['PageController', 'register']);
 $routeur->ajouter('view/auth/login', ['PageController', 'login']);
 $routeur->ajouter('view/admine/dashborad', ['PageController', 'dashboradAdmine']);
 $routeur->ajouter('view/recruteur/dashboard', ['PageController', 'dashboardRecruteur']);
 $routeur->ajouter('view/candidate/dashboard', ['PageController', 'dashboardCandidate']);
+$routeur->ajouter('view/auth/register', ['PageController', 'register']);
+$routeur->ajouter('view/auth/loginUser', ['AuthController', 'login']);
+$routeur->ajouter('view/auth/registerUser', ['AuthController', 'register']);
 
 
-try {
-    $routeur->dispatcher($url);
-} catch (Throwable $erreur) {
-    http_response_code(500);
-    echo "Erreur serveur";
-}
+$routeur->dispatcher($url);

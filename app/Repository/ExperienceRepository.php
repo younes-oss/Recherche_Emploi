@@ -1,4 +1,5 @@
 <?php
+namespace App\Repository;
 class ExperienceRepository {
     private $conn;
 
@@ -7,18 +8,17 @@ class ExperienceRepository {
         $this->conn = $conn;
     }
 
-    public function addExperience($experience): void {
+    public function addExperience($experience){
         $query = "insert into experiences
-                (candidat_id, entreprise, poste, date_debut, date_fin)
-                values (:candidat_id, :entreprise, :poste, :date_debut, :date_fin)";
+                (candidat_id, entreprise, poste, date)
+                values (:candidat_id, :entreprise, :poste, :date)";
 
         $stm = $this->conn->prepare($query);
         $stm->execute([
-            ':candidat_id' => $experience->getId(),
+            ':candidat_id' => $experience->getCondidat()->getId(),
             ':entreprise'  => $experience->getEntreprise(),
             ':poste'       => $experience->getPoste(),
-            ':date_debut'  => $experience->getDateDebut(),
-            ':date_fin'    => $experience->getDateFin()
+            ':date'  => $experience->getDate(),
         ]);
 
         $experience->setId($this->conn->lastInsertId());

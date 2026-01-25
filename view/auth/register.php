@@ -25,7 +25,7 @@
                     <label>Nom complet</label>
                     <div class="champ-icone">
                         <i class="fa-regular fa-user icone"></i>
-                        <input type="text" name="nomComplet" placeholder="Ex: Jean Dupont" required>
+                        <input type="text" name="nomComplet" placeholder="Ex: Jean Dupont" >
                     </div>
                 </div>
 
@@ -33,7 +33,7 @@
                     <label>Email</label>
                     <div class="champ-icone">
                         <i class="fa-regular fa-envelope icone"></i>
-                        <input type="email" name="email" placeholder="email@exemple.com" required>
+                        <input type="email" name="email" placeholder="email@exemple.com" >
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <label>Mot de passe</label>
                     <div class="champ-icone">
                         <i class="fa-solid fa-lock icone"></i>
-                        <input type="password" name="motDePasse" placeholder="Entrez votre mot de passe" required>
+                        <input type="password" name="motDePasse" placeholder="Entrez votre mot de passe" >
                     </div>
                 </div>
 
@@ -49,10 +49,10 @@
                     <label>Vous êtes ?</label>
                     <div class="champ-icone">
                         <i class="fa-solid fa-user-tag icone"></i>
-                        <select name="role" id="roleSelector" required>
+                        <select name="role" id="roleSelector" >
                             <option value="" disabled selected>Choisir votre profil</option>
-                            <option value="candidate">Candidat (Je cherche un job)</option>
-                            <option value="company">Entreprise (Je recrute)</option>
+                            <option value="candidat">Candidat (Je cherche un job)</option>
+                            <option value="recruteur">Entreprise (Je recrute)</option>
                         </select>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             <input type="text" name="nomEntreprise" placeholder="Nom de la société">
                         </div>
                     </div>
-                    <div class="groupe-champ">
+                    <!-- <div class="groupe-champ">
                         <label>Logo de l'entreprise</label>
                         <div class="upload-container">
                             <input type="file" name="logoFile" id="logoFile" accept="image/*">
@@ -74,7 +74,7 @@
                             </label>
                             <div id="previewContainer"></div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div id="sectionCandidat" class="dynamic-section">
@@ -90,8 +90,7 @@
                         <label>Salaire attendu</label>
                         <div class="champ-icone">
                             <i class="fa-solid fa-euro-sign icone"></i>
-                            <input type="number" name="salaireAttendu" placeholder="Ex : 3000 €" min="0" step="100"
-                                required>
+                            <input type="number" name="salaireAttendu" placeholder="Ex : 3000 €" min="0" step="100">
                         </div>
                     </div>
 
@@ -115,7 +114,7 @@
                 </div>
 
                 <button type="submit" class="bouton-principal">Créer mon compte</button>
-                <p class="texte-connexion">Déjà inscrit ? <a href="login.php">Se connecter</a></p>
+                <p class="texte-connexion">Déjà inscrit ? <a href="login">Se connecter</a></p>
             </form>
         </div>
     </section>

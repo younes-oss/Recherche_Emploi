@@ -13,7 +13,7 @@ class RoleRepository
 
     public function findByRole($role)
     {
-        $query = "select * from roles where role = :role";
+        $query = "select * from roles where nom = :role";
         $stm = $this->conn->prepare($query);
 
         $rowRole = $stm->execute([
@@ -23,7 +23,7 @@ class RoleRepository
         $rowRole = $stm->fetch();
 
         if ($rowRole) {
-            $r = new Role($rowRole['role']);
+            $r = new Role($rowRole['nom']);
             $r->setId($rowRole['id']);
             return $r;
         }
