@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repository;
-
+use App\Entity\Tag;
 use App\Config\Database;
 use PDO;
 
@@ -48,8 +48,10 @@ class TagsRepository
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
-            $tags[] = new Tag($row["titre"]);
+            $tag = new Tag ($row["titre"]);
+            $tag->setId($row["id"]);
+            $tags[] =  $tag;
         }
-        return $tags = [];
+        return $tags ;
     }
 }

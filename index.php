@@ -20,4 +20,12 @@ $routeur->ajouter('view/auth/loginUser', ['AuthController', 'login']);
 $routeur->ajouter('view/auth/registerUser', ['AuthController', 'register']);
 
 
-$routeur->dispatcher($url);
+$routeur->ajouter('view/admine/addCategorie', ['CategorieController', 'inputsCheck']);
+$routeur->ajouter('view/admine/addTag', ['TagController', 'inputsCheck']);
+$routeur->ajouter('view/admine/afficherlestag', ['TagController', 'getAllTags']);
+$routeur->ajouter('view/admine/afficherlescatego', ['CategorieController', 'getAllCategories']);
+
+
+
+
+$routeur->dispatch($url);
