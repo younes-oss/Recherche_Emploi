@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 use App\Entity\Experience;
+use App\Entity\Competence;
 class Candidat extends Utilisateur
 {
     private $phone;
     private $expectedSalary;
     private $experiences = [];
+    private $competences = [];
 
     public function __construct(
         $name,
@@ -21,12 +23,20 @@ class Candidat extends Utilisateur
         $this->expectedSalary = $expectedSalary;
     }
 
-    public function addExperience($entreprise, $poste, $dateDebut, $dateFin)
+    public function addExperience($entreprise, $poste, $date)
     {
-        $exp = new Experience($entreprise, $poste, $dateDebut, $dateFin);
+        $exp = new Experience($entreprise, $poste, $date);
         $exp->setCondidat($this);
         $this->experiences[] = $exp;
         return $exp;
+    }
+
+    public function addCompetence($titre)
+    {
+        $comp = new Competence($titre);
+        $comp->setCondidat($this);
+        $this->competences[] = $comp;
+        return $comp;
     }
 
     public function getPhone()
