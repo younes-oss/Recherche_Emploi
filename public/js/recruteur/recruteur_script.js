@@ -4,7 +4,8 @@ const btnFermer = document.querySelector(".fermer-modal");
 const formOffre = document.getElementById("formAjouterOffre");
 
 btnOuvrir.addEventListener("click", () => {
-    modal.style.display = "block";
+    loadTagsFromDatabase();
+    modal.style.display = "flex";
 });
 
 btnFermer.addEventListener("click", () => {
@@ -17,8 +18,36 @@ window.addEventListener("click", (e) => {
     }
 });
 
-formOffre.addEventListener("submit", (e) => {
-    e.preventDefault();
-    modal.style.display = "none";
-    alert("Votre offre a été publiée avec succès !");
-});
+
+
+function loadTagsFromDatabase() {
+    
+    fetch('traiter_offre.php?action=getAllTags')
+        .then(response => response.json())
+        .then(tags => {
+            
+            const tagsContainer = document.querySelector('.tags-checkboxes');
+            
+            
+            tagsContainer.innerHTML = '';
+            
+            
+            tags.forEach(tag => {
+                const label = document.createElement('label');
+                label.innerHTML = `
+                    <input type="checkbox" name="tags[]" value="${tag.id}"> 
+                    ${tag.titre}
+                `;
+                tagsContainer.appendChild(label);
+            });
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            
+            const tagsContainer = document.querySelector('.tags-checkboxes');
+            tagsContainer.innerHTML = '<p>Impossible de charger les tags</p>';
+        });
+}
+
+
+document.getElementById("modalOffre").classList.add("active");

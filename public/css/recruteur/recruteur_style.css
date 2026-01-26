@@ -163,13 +163,26 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
+
+.modal.active {
+  display: flex;
+}
+
+
 .modal-contenu {
   background: #ffffff;
-  margin: 5% auto;
   padding: 35px;
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   border-radius: 20px;
+  /* Hauteur maximale avant d'avoir un scroll */
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
 }
 .modal-contenu .modal-header {
   display: flex;
@@ -220,4 +233,24 @@ body {
   font-weight: 700;
   cursor: pointer;
   margin-top: 15px;
+}
+
+.tags-checkboxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  max-height: 150px; /* Limite la hauteur de la zone des tags */
+  overflow-y: auto;  /* Ajoute un scroll interne si besoin */
+}
+
+.tags-checkboxes label {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 }

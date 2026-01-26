@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Config\Database;
+use App\Entity\Tag;
 use PDO;
 
 class TagsRepository
@@ -40,16 +41,39 @@ class TagsRepository
         }
     }
 
-    public function getAlltags()
+     public function findById(int $id): ?Tag
     {
-        $tags = [];
-        $query = "select * from tags";
+        $query = "SELECT * FROM tags WHERE id = :id";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as $row) {
-            $tags[] = new Tag($row["titre"]);
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
         }
-        return $tags = [];
+
+        return new Tag($row['titre'], (int)$row['id']);
+    }
+
+
+    public function getAllTags(){
+
+    $tags = [];
+
+    $sql = "select * from tags";
+
+    $stmt = $this->conn->prepare($sql);
+
+    $stmt->execute();
+
+    $reults = $stmt->fetchAll(PDO :: FETCH_ASSOC);
+
+    foreach($reults as $row){
+            $tag = new Tag($row['titre']);
+            $tag->setId($row['id']);
+
+            $tags[] = $tag;
+    }
+    return $tags;
     }
 }

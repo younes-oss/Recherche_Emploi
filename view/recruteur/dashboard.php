@@ -175,28 +175,40 @@
                 <h3>Publier une nouvelle offre</h3>
                 <span class="fermer-modal">&times;</span>
             </div>
-            <form id="formAjouterOffre">
+            <form id="formAjouterOffre" method="post" action="traiter_offre.php">
+                <input type="hidden" name="recruteur_id" value="1">
                 <div class="groupe-champ">
                     <label>Titre de l'offre</label>
-                    <input type="text" placeholder="ex: Designer UI/UX" required>
+                    <input type="text" name="poste" placeholder="ex: Designer UI/UX" required>
                 </div>
                 <div class="ligne-double">
                     <div class="groupe-champ">
                         <label>Salaire / hr ($)</label>
-                        <input type="number" placeholder="80" required>
+                        <input type="number" name="salaire" placeholder="80" required>
                     </div>
                     <div class="groupe-champ">
                         <label>Catégorie</label>
-                        <select>
-                            <option>Design</option>
-                            <option>Développement</option>
-                            <option>Marketing</option>
+                        <select name="categorie_id" required>
+                            <option value="">-- Sélectionnez une catégorie --</option>
+                            <option value="1">Design</option>
+                            <option value="2">Développement</option>
+                            <option value="3">Marketing</option>
                         </select>
                     </div>
                 </div>
                 <div class="groupe-champ">
+                    <label>Lieu</label>
+                    <input type="text" name="lieu" placeholder="ex: Casablanca, Télétravail" required>
+                </div>
+                <div class="groupe-champ">
                     <label>Description du poste</label>
-                    <textarea rows="4" placeholder="Missions et prérequis..."></textarea>
+                    <textarea name="qualifications" rows="4" placeholder="Missions et prérequis..."></textarea>
+                </div>
+                <div class="groupe-champ">
+                    <label>Tags (compétences)</label>
+                    <div class="tags-checkboxes">
+                       
+                    </div>
                 </div>
                 <button type="submit" class="btn-valider">Mettre en ligne</button>
             </form>

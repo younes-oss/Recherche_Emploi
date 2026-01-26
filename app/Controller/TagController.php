@@ -3,13 +3,18 @@
 namespace App\Controller;
 
 use App\Service\TagService;
+use App\Entity\Tag;
+use App\Repository\TagsRepository;
 
 class TagController
 {
+
+    private TagsRepository $tagRepo;
     private $TagServ;
     public function __construct()
     {
         $this->TagServ = new TagService();
+        $this->tagRepo = new TagsRepository();
     }
     public function inputsCheck()
     {
@@ -26,4 +31,24 @@ class TagController
             }
         }
     }
+
+
+    
+    
+    public function getAllTags(){
+        $tags = $this->tagRepo->getAllTags();
+        
+        $ArrayTags = [];
+        
+        foreach($tags as $tag){
+            $ArrayTags[] = [
+                'id' => $tag->getId(),
+                'titre' => $tag->getTitre()
+            ];
+        }
+        
+        header('Content-Type: application/json');
+        echo json_encode($ArrayTags);
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Config\Database;
+use App\Entity\Categorie;
 use PDO;
 
 class CategoriesRepository
@@ -39,6 +40,24 @@ class CategoriesRepository
             return false;
         }
     }
+
+    public function findById(int $id): ?Categorie
+    {
+        $query = "SELECT * FROM categories WHERE id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(['id' => $id]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        return new Categorie(
+            $row['titre'],
+            (int)$row['id']
+        );
+    }
+
 
     public function getAllcategories()
     {
