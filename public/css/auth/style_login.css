@@ -113,3 +113,37 @@ body {
     background: transparent;
   }
 }
+.alert {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  z-index: 999999;
+  animation: slideDown 0.3s ease;
+}
+.alert-success {
+  background: #2e7d32;
+}
+.alert-error {
+  background: #c62828;
+}
+.alert-warning {
+  background: #ed6c02;
+}
+.alert-info {
+  background: #0288d1;
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

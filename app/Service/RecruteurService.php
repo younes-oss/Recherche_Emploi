@@ -1,24 +1,24 @@
 <?php
 namespace App\Service;
 use App\Service\UserService;
-use App\Repository\CondidateRepository;
-class CondidatService
+use App\Repository\RecruteurRepository;
+class RecruteurService
 {
     private $userServ;
-    private $condidatRepo;
+    private $recruteurRepo;
 
 
     public function __construct($conn)
     {
         $this->userServ = new UserService($conn);
-        $this->condidatRepo = new CondidateRepository($conn);
+        $this->recruteurRepo = new RecruteurRepository($conn);
     }
 
     public function register($user)
     {
-        $condidat = $this->userServ->register($user);
-        if ($condidat) {
-            $this->condidatRepo->register($condidat);
+        $recruteur = $this->userServ->register($user);
+        if ($recruteur) {
+            $this->recruteurRepo->register($recruteur);
             echo json_encode([
                 'type' => 'success',
                 'message' => 'Inscription réussie',
@@ -28,6 +28,4 @@ class CondidatService
         }
         return false;
     }
-
-
 }

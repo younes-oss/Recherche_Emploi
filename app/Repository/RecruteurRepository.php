@@ -36,4 +36,24 @@ class RecruteurRepository
 
         return $recruteur;
     }
+
+
+    public function register($recruteur)
+        {
+            $query = "insert into recruteurs (id, nom_entreprise)
+            values (:id, :nomEntreprise)";
+            $stm = $this->db->prepare($query);
+
+            $stm->execute([
+                ':id' => $recruteur->getId(),
+                ':nomEntreprise' => $recruteur->getCompanyName()
+            ]);
+            return $recruteur;
+        }
+
 }
+
+
+
+
+

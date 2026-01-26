@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-class Categorie
+use JsonSerializable;
+
+class Categorie implements JsonSerializable 
 {
     private $id ;
     private string $titre;
@@ -14,9 +16,14 @@ class Categorie
 
     public function getId() { return $this->id; }
     public function getTitre() { return $this->titre; }
-    
-
     public function setId($id) { $this->id = $id; }
     public function setTitre($titre) { $this->titre = $titre; }
+
+    public function jsonSerialize(): mixed {
+        return [
+            'id' => $this->id,
+            'titre' => $this->titre
+        ];
+    }
     
 }

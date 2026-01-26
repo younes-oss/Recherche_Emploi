@@ -2,7 +2,7 @@
 namespace App\Service;
 use App\Repository\CategoriesRepository;
 
-class CategorieService{
+class CategorieService {
     private $categoriesRepo;
     public function __construct()
     {
@@ -13,7 +13,7 @@ class CategorieService{
         if(!$this->categoriesRepo->checkIfExists($titre)){
           $this->categoriesRepo->addCategorie($categorie);
         }else{
-            echo "categorie déja existée";
+            echo "categorie déja existe";
         };
 
     }

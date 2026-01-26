@@ -22,7 +22,7 @@
 
         <div class="carte-connexion">
 
-            <form class="formulaire-authentification" method="post" id="formConnexion">
+            <form class="formulaire-authentification" id="formConnexion">
 
                 <h1 class="titre-authentification">Connexion</h1>
 
@@ -31,8 +31,7 @@
                     <label for="identifiant">Email</label>
                     <div class="champ-icone">
                         <i class="fa-regular fa-envelope icone"></i>
-                        <input type="email" id="identifiant" name="identifiant" placeholder="Entrez votre email"
-                            required>
+                        <input type="email" id="identifiant" name="identifiant" placeholder="Entrez votre email">
                     </div>
                 </div>
 
@@ -41,7 +40,7 @@
                     <label for="motDePasse">Mot de passe</label>
                     <div class="champ-icone">
                         <i class="fa-solid fa-lock icone"></i>
-                        <input type="password" id="motDePasse" name="motDePasse" placeholder="********" required>
+                        <input type="password" id="motDePasse" name="motDePasse" placeholder="********">
                     </div>
                 </div>
 
@@ -53,7 +52,7 @@
                 <!-- Lien inscription -->
                 <p class="texte-inscription">
                     Pas encore de compte ?
-                    <a href="register.php">Créer un compte</a>
+                    <a href="register">Créer un compte</a>
                 </p>
 
             </form>
@@ -61,6 +60,7 @@
         </div>
 
     </section>
+    <script src="..\..\public\js\auth\login_script.js"></script>
 
 </body>
 

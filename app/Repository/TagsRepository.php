@@ -45,6 +45,7 @@ class TagsRepository
     {
         $query = "SELECT * FROM tags WHERE id = :id";
         $stmt = $this->conn->prepare($query);
+
         $stmt->execute(['id' => $id]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -75,5 +76,15 @@ class TagsRepository
             $tags[] = $tag;
     }
     return $tags;
+
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $tag = new Tag ($row["titre"]);
+            $tag->setId($row["id"]);
+            $tags[] =  $tag;
+        }
+        return $tags ;
+
     }
 }

@@ -1,13 +1,6 @@
 <?php
 
-use App\Repository\CategoriesRepository;
-use App\Repository\TagsRepository;
 
-$TagsRepository = new TagsRepository();
-$CategoriesRepository = new CategoriesRepository();
-
-$categories = $this->$CategoriesRepository->getAllcategories();
-$tags = $this->$TagsRepository->getAlltags;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -39,14 +32,12 @@ $tags = $this->$TagsRepository->getAlltags;
             <aside class="sidebar-admin">
                 <div class="stat-simple">Total Offres: <strong>24</strong></div>
                 <nav class="nav-admin">
-                    <button class="tab-link active" onclick="switchTab('offres')"><i class="fas fa-briefcase"></i> Toutes les Offres</button>
-                    <button class="tab-link" onclick="switchTab('categories')"><i class="fas fa-list"></i> Catégories</button>
+                    <button class="tab-link active" onclick="switchTab('offres')"><i class="fas fa-briefcase"></i>Toutes les Offres</button>
+                    <button class="tab-link" onclick="switchTab('categories')"><i class="fas fa-list"></i>Catégories</button>
                     <button class="tab-link" onclick="switchTab('tags')"><i class="fas fa-hashtag"></i> Tags</button>
                 </nav>
             </aside>
-
             <div class="content-display">
-
                 <div id="section-offres" class="tab-content active">
                     <h2 class="titre-v">Flux des Offres</h2>
                     <div class="liste-lineaire" id="container-offres">
@@ -61,30 +52,16 @@ $tags = $this->$TagsRepository->getAlltags;
                         </div>
                     </div>
                 </div>
-                <?php if (!empty($categories)): ?>
-                    <div id="section-categories" class="tab-content">
-                        <h2 class="titre-v">Gestion des Catégories</h2>
-                        <div class="badges-container" id="container-categories">
-                            <?php foreach ($categories as $categorie): ?>
-                                <span class="badge-item"><?php echo htmlspecialchars($categorie['titre']); ?><i class="fas fa-times"></i></span>
-                            <?php endforeach; ?>
-                        </div>
+                <div id="section-categories" class="tab-content">
+                    <h2 class="titre-v">Gestion des Catégories</h2>
+                    <div class="badges-container" id="container-categories">
                     </div>
-                <?php endif; ?>
-
-                <?php if (!empty($tags)): ?>
-                    <div id="section-tags" class="tab-content">
-                        <h2 class="titre-v">Gestion des Tags</h2>
-                        <div class="badges-container" id="container-tags">
-                            <?php foreach ($tags as $tag): ?>
-                                <span class="badge-item tag-style"><?php echo htmlspecialchars($tag['titre']); ?><i class="fas fa-times" ></i></span>
-                            <?php endforeach; ?>
-
-                        </div>
+                </div>
+                <div id="section-tags" class="tab-content">
+                    <h2 class="titre-v">Gestion des Tags</h2>
+                    <div class="badges-container" id="container-tags">
                     </div>
-                <?php endif; ?>
-
-
+                </div>
             </div>
         </section>
     </main>
@@ -94,7 +71,7 @@ $tags = $this->$TagsRepository->getAlltags;
             <div class="modal-header">
                 <h3>Nouvelle Catégorie</h3><span class="fermer">&times;</span>
             </div>
-            <form id="formCategory">
+            <form id="formCategory" method="post" action="addCategorie">
                 <input type="text" name="categorieName" placeholder="Nom de la catégorie (ex: Mobile)" required>
                 <button type="submit" class="btn-valider" name="ajouter">Ajouter</button>
             </form>
@@ -106,7 +83,7 @@ $tags = $this->$TagsRepository->getAlltags;
             <div class="modal-header">
                 <h3>Nouveau Tag</h3><span class="fermer">&times;</span>
             </div>
-            <form id="formTag">
+            <form id="formTag" method="post" action="addTag">
                 <input type="text" name="TagName" placeholder="Nom du tag (ex: Freelance)" required>
                 <button type="submit" name="ajouterTag" class="btn-valider">Ajouter</button>
             </form>

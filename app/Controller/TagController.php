@@ -2,19 +2,31 @@
 
 namespace App\Controller;
 
+require_once "./vendor/autoload.php";
+
 use App\Service\TagService;
+
 use App\Entity\Tag;
 use App\Repository\TagsRepository;
+
+
+
+
 
 class TagController
 {
 
     private TagsRepository $tagRepo;
     private $TagServ;
+    private $TagsRepository;
     public function __construct()
     {
         $this->TagServ = new TagService();
+
         $this->tagRepo = new TagsRepository();
+
+        $this->TagsRepository = new TagsRepository();
+
     }
     public function inputsCheck()
     {
@@ -25,12 +37,14 @@ class TagController
             if (empty($error)) {
                 $tag = new Tag($titre);
                 $this->TagServ->createTag($tag);
+                require "View/admine/dashborad.php";
                 $error = '';
             } else {
                 echo $error;
             }
         }
     }
+
 
 
     
@@ -51,4 +65,10 @@ class TagController
         echo json_encode($ArrayTags);
     }
 
+
+
+
 }
+
+    
+

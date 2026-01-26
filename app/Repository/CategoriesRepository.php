@@ -41,6 +41,7 @@ class CategoriesRepository
         }
     }
 
+
     public function findById(int $id): ?Categorie
     {
         $query = "SELECT * FROM categories WHERE id = :id";
@@ -59,6 +60,7 @@ class CategoriesRepository
     }
 
 
+
     public function getAllcategories()
     {
         $categories = [];
@@ -67,8 +69,10 @@ class CategoriesRepository
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as $row) {
-            $categories[] = new Categorie($row["titre"]);
+            $cat = new Categorie($row["titre"]);
+            $cat->setId($row["id"]);
+            $categories[] =  $cat;
         }
-        return $categories = [];
+        return $categories;
     }
 }
