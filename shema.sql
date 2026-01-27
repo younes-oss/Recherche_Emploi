@@ -23,7 +23,7 @@ CREATE TABLE recruteurs (
     id INT PRIMARY KEY,
     nom_entreprise VARCHAR(255) NOT NULL,
     FOREIGN KEY (id) REFERENCES utilisateurs(id) ON DELETE CASCADE
-)
+);
 use CareerLink;
 
 create table utilisateurs (
@@ -270,3 +270,8 @@ FROM offers o
 JOIN recruteurs r ON o.id_recruteur = r.id;
 
 
+INSERT INTO utilisateurs (id, nom, email, mot_de_passe, role_id) 
+VALUES (1, 'Recruteur Test', 'recruteur@test.com', 'password', 2);
+
+INSERT INTO recruteurs (id, nom_entreprise) 
+VALUES (1, 'Entreprise Test');

@@ -5,19 +5,28 @@ namespace App\Repository;
 use App\Entity\Offre;
 use App\Entity\Recruteur;
 use App\Entity\Categorie;
+use App\Config\Database;
+use PDO;
+use InvalidArgumentException;
 
 
 class OffreRepository
 {
 
-    private $conn;
-    public function __construct($conn)
+    private PDO $conn;
+    
+    public function __construct()
     {
-        $this->conn = $conn;
+        $this->conn = Database::getConnection();
     }
 
     public function create(Offre $offre): bool
     {
+
+    if ($offre->getRecruteur() === null) {
+        throw new InvalidArgumentException("Le recruteur ne peut pas être null");
+    }
+        
         $sql = "INSERT INTO offres (poste, salaire, qualifications, lieu, recruteur_id, categorie_id, status) 
                 VALUES (:poste, :salaire, :qualifications, :lieu, :recruteur_id, :categorie_id, :status)";
 
@@ -55,7 +64,7 @@ class OffreRepository
         return $result;
     }
 
-    public function finconnyId(int $id): ?Offre
+    public function findById(int $id): ?Offre
     {
         $sql = "SELECT o.*, 
                        r.id as rec_id, r.name as rec_name, r.email as rec_email, r.password as rec_password, r.company_name,
@@ -82,7 +91,7 @@ class OffreRepository
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll();
     }
-    public function finconnyRecruteur(Recruteur $recruteur): array
+    public function findByRecruteur(Recruteur $recruteur): array
     {
         $sql = "SELECT o.*, 
                        r.id as rec_id, r.name as rec_name, r.email as rec_email, r.password as rec_password, r.company_name,

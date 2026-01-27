@@ -9,7 +9,7 @@ class Offre
     private $salaire;
     private $qualifications;
     private $lieu;
-    private Recruteur $recruteur;
+    private ?Recruteur $recruteur = null;
     private Categorie $categorie;
     private int $status = 1;
     private $createdAt;

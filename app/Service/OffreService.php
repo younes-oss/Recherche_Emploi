@@ -14,6 +14,7 @@ class OffreService
     public function __construct()
     {
         $this->offreRepository = new OffreRepository();
+
     }
 
     
@@ -24,6 +25,9 @@ class OffreService
             return false;
         }
 
+        if ($recruteur === null) {
+        return false;
+    }
         
         $offre = new Offre($poste, $salaire, $qualifications, $lieu);
         $offre->setRecruteur($recruteur);

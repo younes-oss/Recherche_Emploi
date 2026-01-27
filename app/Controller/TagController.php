@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-require_once "./vendor/autoload.php";
 
 use App\Service\TagService;
 
